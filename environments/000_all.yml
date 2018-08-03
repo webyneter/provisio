@@ -1,0 +1,12 @@
+---
+
+local_root_dir_path: "."
+
+project_name: "monitorio"
+
+grafana_users_default_theme: "light"
+grafana_auth_anonymous_org_name: "Anonymous Corp."
+
+prometheus_scrape_interval: "10s"
+prometheus_scrape_timeout: "10s"
+prometheus_evaluation_interval: "10s"
