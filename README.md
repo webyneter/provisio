@@ -14,8 +14,8 @@ Remote host provisioning
 
 ### 1. Initialize the remote host
 
+1.1. From your local shell,
 ```bash
-# In your local shell,
 export REMOTE_HOST_HOSTNAME=
 export REMOTE_HOST_ADDRESS="root@${REMOTE_HOST_HOSTNAME}"
 # New username, like `staging`, all lowercase
@@ -24,7 +24,11 @@ export REMOTE_HOST_NEW_USER=
 
 # Enter the remote host:
 ssh "${REMOTE_HOST_ADDRESS}"
+``` 
 
+1.2. From the remote shell,
+
+```bash
 # Same as REMOTE_HOST_NEW_USER
 export NEW_USER=
 
@@ -36,13 +40,19 @@ usermod -aG sudo "${NEW_USER}"
 
 # Exit the remote host:
 exit
+```
 
+1.3. And locally again:
+```bash
 # Copy your public keys to the host to further enable Ansible to connect:
 ssh-copy-id "root@${REMOTE_HOST_HOSTNAME}"
 ssh-copy-id "${REMOTE_HOST_NEW_USER}@${REMOTE_HOST_HOSTNAME}"
 ```
 
+
 ### 2. Let Ansible do the rest
+
+From your local shell,
 
 ```bash
 # Configure the remote host:
