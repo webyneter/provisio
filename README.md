@@ -56,6 +56,5 @@ From your local shell,
 
 ```bash
 # Configure the remote host:
-export PROVISIO_DOCKER_USER="${REMOTE_HOST_NEW_USER}"
-ansible-playbook --inventory ./hosts.yml play.yml --extra-vars "host=${REMOTE_HOST_HOSTNAME} docker_user=${PROVISIO_DOCKER_USER}"
+ansible-playbook --inventory ./hosts.yml play.yml --extra-vars "host=${REMOTE_HOST_HOSTNAME} docker_user=${REMOTE_HOST_NEW_USER}"
 ```
