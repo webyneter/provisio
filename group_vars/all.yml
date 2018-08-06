@@ -1,5 +1,7 @@
 ---
 
-local_root_dir_path: "."
-
-project_name: "provisio"
+docker_version: "18.06.0~ce~3-0~ubuntu"
+docker_package: "docker-{{ docker_edition }}={{ docker_version }}"
+docker_users:
+  - "{{ docker_user }}"
+docker_compose_version: "1.22.0"

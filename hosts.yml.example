@@ -2,5 +2,4 @@ all:
   hosts:
     provisio:
       ansible_host:
-      ansible_port:
-      ansible_user:
+      ansible_user: root

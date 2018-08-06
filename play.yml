@@ -1,0 +1,39 @@
+---
+
+- hosts: provisio
+
+  handlers:
+  - name: Restart SSH
+    listen: restart ssh
+    service:
+      name: ssh
+      state: restarted
+
+  pre_tasks:
+  - name: APT
+    block:
+    - name: APT update and upgrade
+      apt:
+        update_cache: yes
+        upgrade: safe
+
+    - name: Install htop
+      package:
+        name: htop
+        state: present
+
+    - name: Install tree
+      package:
+        name: tree
+        state: present
+
+  - name: Turn off password authentication
+    replace:
+      path: /etc/ssh/sshd_config
+      regexp: "^PasswordAuthentication yes$"
+      replace: "PasswordAuthentication no"
+      backup: yes
+    notify: restart ssh
+
+  roles:
+  - geerlingguy.docker
