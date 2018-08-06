@@ -25,6 +25,7 @@ provision_staging:
 
   before_script:
   - *global_before_script
+  - apk update && apk add bash
   - bash <(curl -s https://gitlab.com/new-age-tech/utilities/raw/master/ssh_from_gitlab_ci_runner.bash)
 
   script:
