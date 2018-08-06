@@ -1,0 +1,35 @@
+image: registry.gitlab.com/new-age-tech/gitlab-ci-runner-docker/gitlab-ci-runner-docker:latest
+
+
+services:
+- docker:dind
+
+
+stages:
+- deploy
+
+
+before_script:
+- &global_before_script
+  # https://gitlab.com/gitlab-org/gitlab-ce/issues/24235
+    uname -a && whoami && docker --version && docker-compose --version
+
+
+deploy_staging:
+  stage: deploy
+
+  only:
+  - master
+
+  when: manual
+
+  variables:
+    PROVISIONING_HOST: "vps572794.ovh.net"
+    PROVISIONING_NON_ROOT_USER: "staging"
+
+  before_script:
+  - *global_before_script
+  - bash <(curl -s https://gitlab.com/new-age-tech/utilities/raw/master/ssh_from_gitlab_ci_runner.bash)
+
+  script:
+  - ansible-playbook --inventory ./hosts.yml play.yml --extra-vars "host=${PROVISIONING_HOST} docker_user=${PROVISIONING_NON_ROOT_USER}"
