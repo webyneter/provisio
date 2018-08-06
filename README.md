@@ -16,14 +16,16 @@ Remote host provisioning
 
 ```bash
 # In your local shell,
-export REMOTE_HOST_ADDRESS=root@<host>
+export REMOTE_HOST_HOSTNAME=
+export REMOTE_HOST_ADDRESS="root@${REMOTE_HOST_HOSTNAME}"
+# New username, like `staging`, all lowercase
+# (excluding look-alike symbols is a good practice):
+export REMOTE_HOST_NEW_USER=
 
 # Enter the remote host:
 ssh "${REMOTE_HOST_ADDRESS}"
 
-# New username, like `v63q48wt5qgbpfee`,
-# or `<project slug>`, all lowercase
-# (excluding look-alike symbols is a good practice):
+# Same as REMOTE_HOST_NEW_USER
 export NEW_USER=
 
 # Creating a user with restricted rights, and intervening in the system with root rights:
@@ -36,17 +38,14 @@ usermod -aG sudo "${NEW_USER}"
 exit
 
 # Copy your public keys to the host to further enable Ansible to connect:
-export REMOTE_HOST_ADDRESS=<new user>@<host>
-ssh-copy-id "${REMOTE_HOST_ADDRESS}"
+ssh-copy-id "root@${REMOTE_HOST_HOSTNAME}"
+ssh-copy-id "${REMOTE_HOST_NEW_USER}@${REMOTE_HOST_HOSTNAME}"
 ```
 
 ### 2. Let Ansible do the rest
 
 ```bash
-# Install Ansible Galaxy requirements:
-ansible-galaxy install --role-file=./requirements.yml --roles-path=./roles/
-
 # Configure the remote host:
-export PROVISIO_DOCKER_USER=<the ${NEW_USER} you created earlier> 
-ansible-playbook --inventory ./hosts.yml play.yml --extra-vars "docker_user=${PROVISIO_DOCKER_USER}"
+export PROVISIO_DOCKER_USER="${REMOTE_HOST_NEW_USER}"
+ansible-playbook --inventory ./hosts.yml play.yml --extra-vars "host=${REMOTE_HOST_HOSTNAME} docker_user=${PROVISIO_DOCKER_USER}"
 ```

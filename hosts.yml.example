@@ -1,5 +1,0 @@
-all:
-  hosts:
-    provisio:
-      ansible_host:
-      ansible_user: root
