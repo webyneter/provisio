@@ -2,8 +2,7 @@ image: registry.gitlab.com/new-age-tech/gitlab-ci-runner-docker/gitlab-ci-runner
 
 
 stages:
-- staging
-- production
+- provisioning
 
 
 before_script:
@@ -13,7 +12,7 @@ before_script:
 
 
 provision_staging:
-  stage: staging
+  stage: provisioning
 
   only:
   - master
@@ -33,7 +32,7 @@ provision_staging:
 
 
 provision_production:
-  stage: production
+  stage: provisioning
 
   only:
   - master
