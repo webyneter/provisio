@@ -30,6 +30,9 @@ ssh "${PROVISIONING_ADDRESS}"
 1.2. From the remote shell,
 
 ```bash
+# Change root password:
+passwd root
+
 # Same as PROVISIONING_NON_ROOT_USER
 export NEW_USER=
 
