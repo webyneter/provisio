@@ -51,4 +51,9 @@ exit
 # Copy your public keys to the host to further enable Ansible to connect:
 ssh-copy-id "root@${PROVISIONING_HOST}"
 ssh-copy-id "${PROVISIONING_NON_ROOT_USER}@${PROVISIONING_HOST}"
+
+# Authorize CI runner for access by public key
+export CI_RUNNER_PRIVATE_KEY_PATH=
+ssh-copy-id -i "${CI_RUNNER_PRIVATE_KEY_PATH}" "root@${PROVISIONING_HOST}"
+ssh-copy-id -i "${CI_RUNNER_PRIVATE_KEY_PATH}" "${PROVISIONING_NON_ROOT_USER}@${PROVISIONING_HOST}" 
 ```
