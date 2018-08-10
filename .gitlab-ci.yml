@@ -66,7 +66,7 @@ provision_tax_filing_forms:
 
   before_script:
   - *global_before_script
-  - /bin/bash -c 'bash <(curl -s https://gist.githubusercontent.com/webyneter/a727ef1c00ccddfb52b34a100f6f78a4/raw/6266fc7472f70d45fe668958704cb249e17309f8/ssh_from_gitlab_ci_runner.bash)'
+#  - /bin/bash -c 'bash <(curl -s https://gist.githubusercontent.com/webyneter/a727ef1c00ccddfb52b34a100f6f78a4/raw/6266fc7472f70d45fe668958704cb249e17309f8/ssh_from_gitlab_ci_runner.bash)'
 
   script:
   - ansible-playbook --verbose --inventory ./hosts.yml play.yml --extra-vars "host=${HOST} docker_user=${NON_ROOT_USER}"
