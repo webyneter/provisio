@@ -2,7 +2,8 @@ image: registry.gitlab.com/new-age-tech/gitlab-ci-runner-docker/gitlab-ci-runner
 
 
 stages:
-- provisioning
+- staging
+- production
 
 
 before_script:
@@ -12,7 +13,7 @@ before_script:
 
 
 provision_staging:
-  stage: provisioning
+  stage: staging
 
   only:
   - master
@@ -31,8 +32,8 @@ provision_staging:
   - ansible-playbook --verbose --inventory ./hosts.yml play.yml --extra-vars "host=${HOST} docker_user=${NON_ROOT_USER}"
 
 
-provision_production:
-  stage: provisioning
+provision_resume_builder:
+  stage: production
 
   only:
   - master
@@ -41,6 +42,26 @@ provision_production:
 
   variables:
     HOST: "vps198839.vps.ovh.ca"
+    NON_ROOT_USER: "production"
+
+  before_script:
+  - *global_before_script
+  - /bin/bash -c 'bash <(curl -s https://gist.githubusercontent.com/webyneter/a727ef1c00ccddfb52b34a100f6f78a4/raw/6266fc7472f70d45fe668958704cb249e17309f8/ssh_from_gitlab_ci_runner.bash)'
+
+  script:
+  - ansible-playbook --verbose --inventory ./hosts.yml play.yml --extra-vars "host=${HOST} docker_user=${NON_ROOT_USER}"
+
+
+provision_tax_filing_forms:
+  stage: production
+
+  only:
+  - master
+
+  when: manual
+
+  variables:
+    HOST: "vps199175.vps.ovh.ca"
     NON_ROOT_USER: "production"
 
   before_script:
