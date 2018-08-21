@@ -25,5 +25,6 @@
     backup: yes
   notify: restart ssh
 
-- include_role:
-  name: geerlingguy.docker
+- name: geerlingguy.docker
+  include_role:
+    name: geerlingguy.docker
