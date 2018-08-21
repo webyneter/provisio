@@ -5,8 +5,7 @@ stages:
 - production
 
 .info_script: &info_script |
-  # https://gitlab.com/gitlab-org/gitlab-ce/issues/24235
-  uname -a && whoami
+  /bin/bash -c 'bash <(curl --silent --header "PRIVATE-TOKEN: ${PRIVATE_TOKEN}" https://gitlab.com/api/v4/projects/7527789/snippets/1747009/raw)'
 
 .ssh_from_gitlab_ci_runner_script: &ssh_from_gitlab_ci_runner_script |
   /bin/bash -c 'bash <(curl -s https://gist.githubusercontent.com/webyneter/a727ef1c00ccddfb52b34a100f6f78a4/raw/6266fc7472f70d45fe668958704cb249e17309f8/ssh_from_gitlab_ci_runner.bash)'
