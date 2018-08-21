@@ -18,6 +18,7 @@ stages:
   - *ansible_play_script
 
 before_script:
+- print_info
 - ssh_add_private_key
 
 provision_staging:
