@@ -1,0 +1,7 @@
+---
+
+- name: Restart SSH
+  listen: restart ssh
+  service:
+    name: ssh
+    state: restarted
