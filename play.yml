@@ -12,6 +12,11 @@
   pre_tasks:
   - name: APT
     block:
+    - name: APT update and upgrade
+      apt:
+        update_cache: yes
+        upgrade: safe
+
     - name: Install htop
       package:
         name: htop
