@@ -4,15 +4,12 @@ stages:
 - staging
 - production
 
-.ansible_play_script: &ansible_play_script |
-  ansible-playbook --verbose --inventory ./hosts.yml play.yml --extra-vars "host=${HOST} docker_user=${NON_ROOT_USER}"
-
 .base_job: &base_job
   only:
   - master
   when: manual
   script:
-  - *ansible_play_script
+  - ansible-playbook --verbose --inventory ./hosts.yml play.yml --extra-vars "host=${HOST} docker_user=${NON_ROOT_USER}"
 
 before_script:
 - print_info
