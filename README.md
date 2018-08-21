@@ -57,3 +57,11 @@ export CI_RUNNER_PRIVATE_KEY_PATH=
 ssh-copy-id -i "${CI_RUNNER_PRIVATE_KEY_PATH}" "root@${PROVISIONING_HOST}"
 ssh-copy-id -i "${CI_RUNNER_PRIVATE_KEY_PATH}" "${PROVISIONING_NON_ROOT_USER}@${PROVISIONING_HOST}" 
 ```
+
+## Use Cases
+
+### Upgrading Ansible requirements
+
+```bash
+ansible-galaxy install --role-file=./requirements.yml --roles-path=./roles/
+```
