@@ -26,4 +26,5 @@
   notify: restart ssh
 
 - include_role:
-    name: geerlingguy.docker
+    # Such a path allows for the role to be resolved from within dependent roles
+    name: provisio/roles/geerlingguy.docker  # TODO: this seems like a _slight_ violation of SRP but not too much choice here, I guess...
