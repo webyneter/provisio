@@ -23,4 +23,4 @@
       state: present
 
 - include_role:
-    name: geerlingguy.docker-2.5.1
+    name: provisio/roles/geerlingguy.docker
