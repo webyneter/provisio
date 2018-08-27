@@ -1,0 +1,5 @@
+---
+
+- fail:
+    msg: "'docker_user' is not defined"
+  when: docker_user is not defined
