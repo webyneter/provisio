@@ -1,12 +1,17 @@
 ---
 
+- include_tasks: check_required_vars.yml
+
+- name: Turn off password authentication
+  replace:
+    path: /etc/ssh/sshd_config
+    regexp: "^PasswordAuthentication yes$"
+    replace: "PasswordAuthentication no"
+    backup: yes
+  notify: restart ssh
+
 - name: APT
   block:
-  - name: APT update and upgrade
-    apt:
-      update_cache: yes
-      upgrade: safe
-
   - name: Install htop
     package:
       name: htop
@@ -17,14 +22,5 @@
       name: tree
       state: present
 
-- name: Turn off password authentication
-  replace:
-    path: /etc/ssh/sshd_config
-    regexp: "^PasswordAuthentication yes$"
-    replace: "PasswordAuthentication no"
-    backup: yes
-  notify: restart ssh
-
 - include_role:
-    # Such a path allows for the role to be resolved from within dependent roles
-    name: provisio/roles/geerlingguy.docker  # TODO: this seems like a _slight_ violation of SRP but not too much choice here, I guess...
+    name: geerlingguy.docker-2.5.1
