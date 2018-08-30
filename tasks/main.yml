@@ -2,6 +2,10 @@
 
 - include_tasks: check_required_vars.yml
 
+- name: "Create {{ non_root_user }}"
+  user:
+    name: "{{ non_root_user }}"
+
 - include_role:
     name: provisio/roles/wtcross.sudoers
 
