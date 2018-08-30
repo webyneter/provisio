@@ -1,5 +1,16 @@
 ---
 
+sudoer_rewrite_sudoers_file: False
+sudoer_remove_unauthorized_specs: False
+sudoer_separate_specs: True
+sudoer_specs:
+- name: "{{ sudoer }}"
+  users: "{{ sudoer }}"
+  hosts: ALL
+  operators: ALL
+  commands: ALL
+  tags: NOPASSWD
+
 docker_version: "18.06.1~ce~3-0~ubuntu"
 docker_package: "docker-{{ docker_edition }}={{ docker_version }}"
 docker_users:

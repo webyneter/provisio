@@ -1,5 +1,9 @@
 ---
 
 - fail:
+    msg: "'sudoer' is not defined"
+  when: sudoer is not defined
+
+- fail:
     msg: "'docker_user' is not defined"
   when: docker_user is not defined

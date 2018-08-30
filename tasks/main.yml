@@ -2,6 +2,9 @@
 
 - include_tasks: check_required_vars.yml
 
+- include_role:
+    name: provisio/roles/wtcross.sudoers
+
 - name: Turn off password authentication
   replace:
     path: /etc/ssh/sshd_config
