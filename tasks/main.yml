@@ -2,18 +2,10 @@
 
 - include_tasks: check_required_vars.yml
 
-- name: "Create {{ non_root_user }} user and accompanying files"
-  block:
-  - name: "Create {{ non_root_user }} user"
-    user:
-      name: "{{ non_root_user }}"
-  - name: "Create  /home/{{ non_root_user }}/.ssh/"
-    file:
-      path: "/home/{{ non_root_user }}/.ssh/"
-      state: directory
-      mode: 0700
-      owner: "{{ non_root_user }}"
-      group: "{{ non_root_user }}"
+# TODO: as of now, SSH through this user is NOT working as expected (requires password when copying pub keys)
+- name: "Create {{ non_root_user }} user"
+  user:
+    name: "{{ non_root_user }}"
 
 - include_role:
     name: provisio/roles/wtcross.sudoers
