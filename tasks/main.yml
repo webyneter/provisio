@@ -19,6 +19,10 @@
 
 - name: APT
   block:
+  - name: Update APT cache
+    apt:
+      update_cache: yes
+
   - name: Install htop
     package:
       name: htop
