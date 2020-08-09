@@ -1,77 +1,41 @@
 galaxy_info:
   role_name: "sudoers"
   author:
-    - "Andrew J. Huffman"
-    - "Tyler Cross"
-    - "Carrol Cox"
-    - "Thiago Alves"
+    - Tyler Cross
+    - Andrew J. Huffman
   company: "Red Hat"
-  description: "Controls the configuration of the default /etc/sudoers file and included files/directories"
-  license: "MIT"
-  min_ansible_version: 2.5
+  description: Controls the configuration of the sudoers file and /etc/sudoers.d/ files
+  issue_tracker_url: https://github.com/wtcross/ansible-sudoers/issues
+  license: MIT
+  min_ansible_version: 2.3
+  #github_branch: master
   platforms:
-    - name: "EL"
+    - name: EL
       versions:
-        - "all"
-    - name: "Alpine"
+        - all
+    - name: Fedora
       versions:
-        - "all"
-    - name: "Amazon"
+        - all
+    - name: opensuse
       versions:
-        - "all"
-    - name: "ArchLinux"
+        - all
+    - name: Amazon
       versions:
-        - "all"
-    - name: "ClearLinux"
+        - all
+    - name: Ubuntu
       versions:
-        - "all"
-    - name: "Debian"
+        - all
+    - name: SLES
       versions:
-        - "all"
-    - name: "DragonFlyBSD"
+        - all
+    - name: Debian
       versions:
-        - "all"
-    - name: "Fedora"
-      versions:
-        - "all"
-    - name: "FreeBSD"
-      versions:
-        - "all"
-    - name: "GenericLinux"
-      versions:
-        - "all"
-    - name: "GenericBSD"
-      versions:
-        - "all"
-    - name: "Gentoo"
-      versions:
-        - "all"
-    - name: "HardenedBSD"
-      versions:
-        - "all"
-    - name: "macOS"
-      versions:
-        - "all"
-    - name: "OpenBSD"
-      versions:
-        - "all"
-    - name: "opensuse"
-      versions:
-        - "all"
-    - name: "SLES"
-      versions:
-        - "all"
-    - name: "Solaris"
-      versions:
-        - "all"
-    - name: "Ubuntu"
-      versions:
-        - "all"
+        - all
 
   galaxy_tags:
-    - "sudo"
-    - "sudoers"
-    - "admin"
-    - "system"
+    - sudo
+    - sudoers
+    - admin
+    - system
 
 dependencies: []

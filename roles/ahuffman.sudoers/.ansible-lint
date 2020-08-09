@@ -1,2 +1,0 @@
-skip_list:
-  - "602" #python truthiness does not properly work in ansible
