@@ -1,20 +1,21 @@
 ---
 
-sudoer_rewrite_sudoers_file: False
-sudoer_remove_unauthorized_specs: False
-sudoer_separate_specs: True
-sudoer: "{{ non_root_user }}"
-sudoer_specs:
-- name: "{{ sudoer }}"
-  users: "{{ sudoer }}"
+# Dangerous settings are explicitly set to False for added security.
+sudoers_rewrite_default_sudoers_file: False
+sudoers_remove_unauthorized_included_files: False
+
+_sudoer: "{{ non_root_user }}"
+user_specifications:
+- name: "{{ _sudoer }}"
+  users: "{{ _sudoer }}"
   hosts: ALL
   operators: ALL
   commands: ALL
   tags: NOPASSWD
 
-docker_user: "{{ non_root_user }}"
-docker_version: "18.06.1~ce~3-0~ubuntu"
+docker_edition: "ce"
+docker_version: "19.03.12~{{ docker_edition }}~3-0~ubuntu"
 docker_package: "docker-{{ docker_edition }}={{ docker_version }}"
 docker_users:
-  - "{{ docker_user }}"
-docker_compose_version: "1.22.0"
+  - "{{ non_root_user }}"
+docker_compose_version: "1.26.2"
