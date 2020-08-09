@@ -1,5 +1,5 @@
 - src: geerlingguy.docker
-  version: 2.5.2
+  version: 2.8.1
 
 - src: ahuffman.sudoers
-  version: 1.0.7
+  version: 2.0.2
