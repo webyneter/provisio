@@ -13,9 +13,10 @@ user_specifications:
   commands: ALL
   tags: NOPASSWD
 
-docker_edition: "ce"
+docker_edition: ce
+docker_primary_version: 19.03.12
 docker_version: "19.03.12~{{ docker_edition }}~3-0~ubuntu"
 docker_package: "docker-{{ docker_edition }}={{ docker_version }}"
 docker_users:
   - "{{ non_root_user }}"
-docker_compose_version: "1.26.2"
+docker_compose_version: 1.26.2
