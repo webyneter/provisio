@@ -15,7 +15,7 @@ user_specifications:
 
 docker_edition: ce
 docker_primary_version: 19.03.12
-docker_version: "19.03.12~{{ docker_edition }}~3-0~ubuntu-bionic"
+docker_version: "{{ docker_primary_version }}~3-0~ubuntu-bionic"
 docker_package: "docker-{{ docker_edition }}={{ docker_version }}"
 docker_users:
   - "{{ non_root_user }}"
