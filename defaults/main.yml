@@ -1,0 +1,5 @@
+---
+
+docker_edition: ce
+docker_version: 5:19.03.12~3-0~ubuntu-bionic
+docker_compose_version: 1.26.2
